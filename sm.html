@@ -23,18 +23,39 @@
 var width = 960,
     height = 500;
 
-var nodes =  [{"name": "John", "gender": "male", "preferences": ["Sally", "Sharon"]}, 
-              {"name": "Robert", gender": "male", "preferences": ["Sally", "Sharon"]},
+var graph =  [{"name": "John", "gender": "male", "preferences": ["Sally", "Sharon"]}, 
+              {"name": "Robert", "gender": "male", "preferences": ["Sally", "Sharon"]},
               {"name": "Sally", "gender": "female", "preferences": ["John", "Robert"]},
               {"name": "Sharon", "gender": "female", "preferences": ["Robert, John"]}],
-    engagements = [["John", "Sally"]]};
+    engagements = [["John", "Sally"]];
 
 var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height);
+            
+var yscale = d3.scale.linear()
+               .domain([0,1])
+               .range([height*.2,height*.8]);
 
-function update(nodes, engagements) {
+var xscale = d3.scale.linear()
+               .domain([0,1])
+               .range([width*.2,width*.8])
+
+function update(graph, engagements) {
+    var nodes = svg.selectAll(".nodes")
+          .data(graph)
+        .enter().append("circle")
+        .attr("class", function (d) {return d.gender == "male" ? "male" : "female"})
+        .attr("r", 6)
+        .attr("cx", function (d) {return d.gender == "male" ? xscale(.1) : xscale(.9)})
+        .attr("cy", function (d,i) {return yscale((i*1.)/graph.length)})
+
     var 
+
+    var links = svg.selectAll(".links")
+          .data(engagments)
+        .enter().append("line")
+        .attr(
 }
 
 </script>
