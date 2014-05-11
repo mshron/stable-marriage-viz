@@ -20,6 +20,40 @@
 <script src="d3.v3.min.js"></script>
 <script src="underscore-min.js"></script>
 <script>
+
+var pickPreferences = function(name, gender, pair){
+    console.log(name)
+    var person = {}
+    person['name'] = name
+    person['gender'] = gender
+    person['preferences'] = _.shuffle(pair)
+    console.log(person)
+    return person
+  }
+
+var marriagePool = function(pair_num){
+
+  // Create list of pairs.
+  var pair = _.range(pair_num)
+
+  // Generate men and women with preference sets.
+  gender = 'male'
+  dudes = _.map(pair, function(name){ return pickPreferences(name, gender, pair)} )
+
+  gender = 'female'
+  ladies = _.map(pair, function(name){ return pickPreferences(name, gender, pair)} )
+
+  // Combine dudes and ladies into a single marriage pool.
+  pool = dudes.concat(ladies)
+
+  return pool
+  
+}
+
+var pair_num = 5
+pool = marriagePool(pair_num)
+console.log(pool)
+
 var width = 960,
     height = 500;
 
@@ -50,12 +84,10 @@ function update(graph, engagements) {
         .attr("cx", function (d) {return d.gender == "male" ? xscale(.1) : xscale(.9)})
         .attr("cy", function (d,i) {return yscale((i*1.)/graph.length)})
 
-    var 
-
     var links = svg.selectAll(".links")
           .data(engagments)
         .enter().append("line")
-        .attr(
+        
 }
 
 </script>
