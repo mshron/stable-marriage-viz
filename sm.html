@@ -17,23 +17,25 @@
 }
 </style>
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://underscorejs.org/underscore-min.js"></script>
+<script src="d3.v3.min.js"></script>
+<script src="underscore-min.js"></script>
 <script>
 var width = 960,
     height = 500;
 
-var data = {"men": [{"name": "John", "preferences": ["Sally", "Sharon"]}, 
-                    {"name": "Robert", "preferences": ["Sally", "Sharon"]}],
-           "women": [{"name": "Sally", "preferences": ["John", "Robert"]},
-                     {"name": "Sharon", "preferences": ["Robert, John"]},
-           "engagements": [["John", "Sally"]]};
+var nodes =  [{"name": "John", "gender": "male", "preferences": ["Sally", "Sharon"]}, 
+              {"name": "Robert", gender": "male", "preferences": ["Sally", "Sharon"]},
+              {"name": "Sally", "gender": "female", "preferences": ["John", "Robert"]},
+              {"name": "Sharon", "gender": "female", "preferences": ["Robert, John"]}],
+    engagements = "engagements": [["John", "Sally"]]};
 
 var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height);
 
-function update(
+function update(nodes, engagements) {
+    var 
+}
 
 </script>
 </body>
