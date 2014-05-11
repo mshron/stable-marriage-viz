@@ -18,6 +18,7 @@
 </style>
 <body>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
 <script>
 var width = 960,
     height = 500;
@@ -25,9 +26,14 @@ var width = 960,
 var data = {"men": [{"name": "John", "preferences": ["Sally", "Sharon"]}, 
                     {"name": "Robert", "preferences": ["Sally", "Sharon"]}],
            "women": [{"name": "Sally", "preferences": ["John", "Robert"]},
-                     {"name": "Sharon", "preferences": ["Robert, John"]}};
+                     {"name": "Sharon", "preferences": ["Robert, John"]},
+           "engagements": [["John", "Sally"]]};
 
-var svg = d3.select(
+var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+function update(
 
 </script>
 </body>
